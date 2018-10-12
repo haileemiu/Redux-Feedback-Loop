@@ -24,6 +24,24 @@ class Admin extends Component {
     })
   }
 
+  // Delete a survey
+  deleteSurvey(id) {
+    axios({
+      method: 'DELETE', 
+      url: `/feedback/${id}`
+    }).then(response => {
+      this.getSurveys();
+    }).catch(error => {
+      alert('unable to delete survey');
+      console.log('ERROR:', error);
+    })
+  }
+
+  // Delete survey click
+  handleClick = (survey) => () => {
+    this.deleteSurvey(survey.id);
+  }
+
   componentDidMount() {
     this.getSurveys();
   }
@@ -50,8 +68,7 @@ class Admin extends Component {
                 <td>{survey.understanding}</td>
                 <td>{survey.support}</td>
                 <td>{survey.comments}</td>
-                {/* TOD0: add functionality */}
-                <td><button>Delete</button></td>
+                <td><button onClick={this.handleClick(survey)}>Delete</button></td>
                 
               </tr>
             })}

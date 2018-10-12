@@ -37,4 +37,20 @@ router.post('/', (req, res) => {
     })
 }) // END post feedback
 
+// TODO: test working
+// // Delete a survey
+router.delete('/:id', (req, res) => {
+
+  const query = `DELETE FROM "feedback" WHERE "id"=$1;`
+
+  pool.query(query, [req.params.id])
+  .then(results => {
+    res.sendStatus(201);
+  })
+  .catch(error => {
+    console.log('ERROR:', error);
+  })
+}) // END delete 
+
+
 module.exports = router;
