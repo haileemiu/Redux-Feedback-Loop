@@ -3,7 +3,8 @@
 ---
 
  - [x] set up server side routes
- - [ ] get the feedback from database
+ - [x] get the feedback from database
+ - [x] post feedback to database
 
  - [ ] LAST: delete console logs (keep until the end for later reference)
 
