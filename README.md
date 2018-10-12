@@ -7,7 +7,7 @@
 - [x] post feedback to database
 
 - [x] create admin view
-- [ ] working delete button
+- [x] working delete button
 
 - [ ] LAST: delete console logs (keep until the end for later reference)
 
