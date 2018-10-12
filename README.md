@@ -5,7 +5,9 @@
 - [x] set up server side routes
 - [x] get the feedback from database
 - [x] post feedback to database
-- [ ] create admin view
+
+- [x] create admin view
+- [ ] working delete button
 
 - [ ] LAST: delete console logs (keep until the end for later reference)
 
