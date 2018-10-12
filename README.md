@@ -3,6 +3,9 @@
 ---
 
  - [x] set up server side routes
+ - [ ] get the feedback from database
+
+ - [ ] LAST: delete console logs (keep until the end for later reference)
 
 
 ---
