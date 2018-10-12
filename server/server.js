@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
+const feedbackRouter = require('./routes/feedback.router.js')
+app.use('/feedback/admin', feedbackRouter);
 
+const surveyRouter = require('./routes/survey.router.js')
+app.use('/feedback/survey', surveyRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
