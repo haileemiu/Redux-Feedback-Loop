@@ -35,6 +35,6 @@ router.post('/', (req, res) => {
       console.log('ERROR in POST /owners router:', error);
       res.sendStatus(500);
     })
-})
+}) // END post feedback
 
 module.exports = router;
