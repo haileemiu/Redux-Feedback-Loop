@@ -11,6 +11,13 @@ app.use(express.static('build'));
 /** ---------- EXPRESS ROUTES ---------- **/
 const feedbackRouter = require('./routes/feedback.router.js')
 app.use('/feedback', feedbackRouter);
+app.use('/page1', feedbackRouter);
+app.use('/page2', feedbackRouter);
+app.use('/page3', feedbackRouter);
+app.use('/page4', feedbackRouter);
+app.use('/page5', feedbackRouter);
+
+
 
 
 /** ---------- START SERVER ---------- **/

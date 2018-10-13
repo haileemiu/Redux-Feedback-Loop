@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
-import axios from 'axios';
-import Admin from '../Admin/Admin'
+
+import Admin from '../Admin/Admin';
+import Page1 from '../Survey/Page1';
+import Page2 from '../Survey/Page2';
+import Page3 from '../Survey/Page3';
+import Page4 from '../Survey/Page4';
+import Page5 from '../Survey/Page5';
+
 import './App.css';
 
 class App extends Component {
@@ -15,10 +21,13 @@ class App extends Component {
           </header>
           <br />
 
-
           <Route path="/feedback" component={Admin} />
-          {/* Button on the last survey page */}
-          <Link to="/feedback">Submit</Link>
+          <Route path="/page1" component={Page1} />
+          <Route path="/page2" component={Page2} />
+          <Route path="/page3" component={Page3} />
+          <Route path="/page4" component={Page4} />
+          <Route path="/page5" component={Page5} />
+
         </div>
       </Router>
     );

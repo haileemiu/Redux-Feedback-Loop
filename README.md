@@ -8,6 +8,7 @@
 
 - [x] create admin view
 - [x] working delete button
+- [ ] survey views
 
 - [ ] LAST: delete console logs (keep until the end for later reference)
 
