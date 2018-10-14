@@ -44,7 +44,7 @@ class Page3 extends Component {
               value={this.state.input}
               onChange={this.handleChange}
             />
-            <input type="submit" value="Submit"/>
+            <input type="submit" value="Next"/>
           </label>
         </form>
       </div>
