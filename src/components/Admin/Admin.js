@@ -2,10 +2,41 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import PropTypes from 'prop-types';
+
+
+
+import {
+  withStyles,
+  Table,
+  TableBody,
+  TableCell,
+  Button,
+  TableHead,
+  TableRow,
+  Paper
+  
+} from '@material-ui/core';
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
+
 class Admin extends Component {
   // Local state to store data to be mapped in a table
-  state = {
-    feedback: []
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      feedback: []
+    }
   }
 
   // Get feedback data
@@ -45,40 +76,54 @@ class Admin extends Component {
   componentDidMount() {
     this.getFeedback();
   }
-
+ 
   render() {
-    return (
-      <div>
-        <h1>Feedback Results</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Feeling</th>
-              <th>Comprehension</th>
-              <th>Support</th>
-              <th>Comments</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          {/* Loop through the data and display each entry in a new row */}
-          <tbody>
-            {this.state.feedback.map((feedback) => {
-              return <tr key={feedback.id}>
-                <td>{feedback.id}</td>
-                <td>{feedback.feeling}</td>
-                <td>{feedback.understanding}</td>
-                <td>{feedback.support}</td>
-                <td>{feedback.comments}</td>
-                <td><button onClick={this.handleClick(feedback)}>Delete</button></td>
+    const { classes } = this.props; 
 
-              </tr>
+    return (
+      
+      <div>
+        <Paper className={classes.root}>
+        <h1>Feedback Results</h1>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Feeling</TableCell>
+              <TableCell>Comprehension</TableCell>
+              <TableCell>Support</TableCell>
+              <TableCell>Comments</TableCell>
+              <TableCell>Delete</TableCell>
+            </TableRow>
+            </TableHead>
+          {/* Loop through the data and display each entry in a new row */}
+          <TableBody>
+            {this.state.feedback.map((feedback) => {
+              return <TableRow key={feedback.id}>
+                <TableCell>{feedback.id}</TableCell>
+                <TableCell>{feedback.feeling}</TableCell>
+                <TableCell>{feedback.understanding}</TableCell>
+                <TableCell>{feedback.support}</TableCell>
+                <TableCell>{feedback.comments}</TableCell>
+                <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell>
+
+              </TableRow>
             })}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
+        </Paper>
       </div>
     );
   }
 }
 
-export default connect()(Admin);
+// export default connect()(Admin);
+
+ 
+Admin.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+const styledForm = withStyles(styles)(Admin);
+
+export default connect()(styledForm);
