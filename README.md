@@ -13,10 +13,10 @@ This app is to practice a full stack application using: React, React Routes, and
 - [x] survey views
 - [x] send redux state to post router
 
+- [x] Add descriptive comments
+- [x] LAST: delete console logs (keep until the end for later reference)
 
-- [ ] Add descriptive comments
-- [ ] LAST: delete console logs (keep until the end for later reference)
-
+- [ ] Use Material UI for styling
 
 ---
 # Original Assignment Directions

@@ -7,6 +7,7 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
+// Reducer to take in redux state
 const feedback = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_PAGE_1':
@@ -28,7 +29,7 @@ const allReducers = combineReducers({
 
 const store = createStore(
   allReducers,
-  // using logger and redux dev tools
+  // using logger and using redux dev tools
   compose(applyMiddleware(logger), window.devToolsExtension ? window.devToolsExtension() : f => f)
 )
 
