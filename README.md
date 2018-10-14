@@ -16,8 +16,8 @@ This app is to practice a full stack application using: React, React Routes, and
 - [x] Add descriptive comments
 - [x] LAST: delete console logs (keep until the end for later reference)
 
-- [ ] Use Material UI for styling
-
+- [x] Use Material UI for styling
+- [x] most recent feedback at the top
 ---
 # Original Assignment Directions
 
