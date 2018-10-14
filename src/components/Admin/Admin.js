@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import PropTypes from 'prop-types';
 
-
-
 import {
   withStyles,
   Table,
@@ -14,8 +12,13 @@ import {
   Button,
   TableHead,
   TableRow,
-  Paper
-  
+  Paper,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+
 } from '@material-ui/core';
 
 const styles = theme => ({
@@ -31,11 +34,12 @@ const styles = theme => ({
 
 class Admin extends Component {
   // Local state to store data to be mapped in a table
-  
+
   constructor(props) {
     super(props);
     this.state = {
-      feedback: []
+      feedback: [],
+      open: false
     }
   }
 
@@ -70,48 +74,83 @@ class Admin extends Component {
   // Delete feedback click
   handleClick = (feedback) => () => {
     this.deleteFeedbackEntry(feedback.id);
+    this.setState({ open: true });
   }
+
+  // Dialog box
+  handleDisagreeClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleAgreeClose = () => {
+    this.setState({ open: false });
+  };
 
   // Call get on page load  
   componentDidMount() {
     this.getFeedback();
   }
- 
+
   render() {
-    const { classes } = this.props; 
+    const { classes } = this.props;
 
     return (
-      
+
       <div>
         <Paper className={classes.root}>
-        <h1>Feedback Results</h1>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Feeling</TableCell>
-              <TableCell>Comprehension</TableCell>
-              <TableCell>Support</TableCell>
-              <TableCell>Comments</TableCell>
-              <TableCell>Delete</TableCell>
-            </TableRow>
-            </TableHead>
-          {/* Loop through the data and display each entry in a new row */}
-          <TableBody>
-            {this.state.feedback.map((feedback) => {
-              return <TableRow key={feedback.id}>
-                <TableCell>{feedback.id}</TableCell>
-                <TableCell>{feedback.feeling}</TableCell>
-                <TableCell>{feedback.understanding}</TableCell>
-                <TableCell>{feedback.support}</TableCell>
-                <TableCell>{feedback.comments}</TableCell>
-                <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell>
-
+          <h1>Feedback Results</h1>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Feeling</TableCell>
+                <TableCell>Comprehension</TableCell>
+                <TableCell>Support</TableCell>
+                <TableCell>Comments</TableCell>
+                <TableCell>Delete</TableCell>
               </TableRow>
-            })}
-          </TableBody>
-        </Table>
+            </TableHead>
+            {/* Loop through the data and display each entry in a new row */}
+            <TableBody>
+              {this.state.feedback.map((feedback) => {
+                return <TableRow key={feedback.id}>
+                  <TableCell>{feedback.id}</TableCell>
+                  <TableCell>{feedback.feeling}</TableCell>
+                  <TableCell>{feedback.understanding}</TableCell>
+                  <TableCell>{feedback.support}</TableCell>
+                  <TableCell>{feedback.comments}</TableCell>
+                  <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell>
+                  <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Let Google help apps determine location. This means sending anonymous location data to
+                        Google, even when no apps are running.
+            </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={this.handleDisagreeClose} color="primary">
+                        Disagree
+            </Button>
+                      <Button onClick={this.handleAgreeClose} color="primary" autoFocus>
+                        Agree
+            </Button>
+                    </DialogActions>
+                  </Dialog>
+
+                  {/* <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell> */}
+
+                </TableRow>
+              })}
+            </TableBody>
+          </Table>
         </Paper>
+
       </div>
     );
   }
@@ -119,7 +158,7 @@ class Admin extends Component {
 
 // export default connect()(Admin);
 
- 
+
 Admin.propTypes = {
   classes: PropTypes.object.isRequired
 };
