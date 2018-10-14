@@ -9,7 +9,7 @@
 - [x] create admin view
 - [x] working delete button
 - [x] survey views
-- [ ] send redux state to post router
+- [x] send redux state to post router
 
 
 - [ ] Add descriptive comments
