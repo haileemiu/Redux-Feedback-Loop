@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 let router = express.Router();
 
 // Get the feedback results from the db
-router.get('/', (req, res) => {
+router.get('/admin', (req, res) => {
   
   const query = `SELECT * FROM "feedback";`
 
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 }) // END feedback results
 
 // Post feedback data to db
-router.post('/', (req, res) => {
+router.post('/feedback', (req, res) => {
 
   console.log('req.body:', req.body)
   const query = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments") VALUES ($1, $2, $3, $4);`;
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 }) // END post feedback
 
 // // Delete a survey
-router.delete('/:id', (req, res) => {
+router.delete('/admin/:id', (req, res) => {
 
   const query = `DELETE FROM "feedback" WHERE "id"=$1;`
 
