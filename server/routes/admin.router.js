@@ -6,7 +6,7 @@ let router = express.Router();
 
 // Get the feedback results from the sql db
 router.get('/', (req, res) => {
-    const query = `SELECT * FROM "feedback";`
+    const query = `SELECT * FROM "feedback" ORDER BY "id" DESC;`
 
     pool.query(query)
         .then(result => {

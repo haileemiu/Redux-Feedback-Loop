@@ -26,7 +26,7 @@ class Admin extends Component {
   // Delete a feedback entry
   deleteFeedbackEntry(id) {
     axios({
-      method: 'DELETE', 
+      method: 'DELETE',
       url: `/admin/${id}`
     }).then(() => {
       // Load the feedback after delete 
@@ -46,37 +46,39 @@ class Admin extends Component {
     this.getFeedback();
   }
 
-  render() { 
-    return ( 
+  render() {
+    return (
       <div>
         <h1>Feedback Results</h1>
         <table>
           <thead>
             <tr>
-            <th>Feeling</th>
-            <th>Comprehension</th>
-            <th>Support</th>
-            <th>Comments</th>
-            <th>Delete</th>
+              <th>ID</th>
+              <th>Feeling</th>
+              <th>Comprehension</th>
+              <th>Support</th>
+              <th>Comments</th>
+              <th>Delete</th>
             </tr>
           </thead>
           {/* Loop through the data and display each entry in a new row */}
           <tbody>
             {this.state.feedback.map((feedback) => {
               return <tr key={feedback.id}>
+                <td>{feedback.id}</td>
                 <td>{feedback.feeling}</td>
                 <td>{feedback.understanding}</td>
                 <td>{feedback.support}</td>
                 <td>{feedback.comments}</td>
                 <td><button onClick={this.handleClick(feedback)}>Delete</button></td>
-                
+
               </tr>
             })}
           </tbody>
         </table>
       </div>
-     );
+    );
   }
 }
- 
+
 export default connect()(Admin);
