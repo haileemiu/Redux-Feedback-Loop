@@ -2,6 +2,23 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import {
+  withStyles,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  TextField,
+  Typography,
+  Grid,
+  CardHeader
+} from '@material-ui/core';
+
+const styles =  ({
+
+});
+
 class Page3 extends Component {
   constructor(props) {
     super(props);
@@ -27,32 +44,53 @@ class Page3 extends Component {
   }
 
   render() { 
-
+    const { classes } = this.props;
     if (this.state.toPage4 === true) {
       return <Redirect to='/page4' />
     }
 
     return ( 
-      <div>
-        <h1>3 of 4 pages</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            How well are you being supported?
-            <input 
-              type="number" 
-              placeholder="Score 1-5"
-              value={this.state.input}
-              onChange={this.handleChange}
-            />
-            <input type="submit" value="Next"/>
-          </label>
-        </form>
-      </div>
-
+      <div className={classes.root}>
+      <Grid container spacing={24} justify="center">
+        <Grid item xs={6}>
+          <Card>
+            <CardHeader subheader="Page 3 of 4" />
+            <CardContent>
+              <Typography variant="h5" >
+                How well are you being supported?
+              </Typography>
+              <form>
+                <TextField
+                  label="Score 1-5"
+                  value={this.state.input}
+                  onChange={this.handleChange}
+                  margin="normal"
+                />
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    onClick={this.handleSubmit}>
+                    NEXT
+                  </Button>
+                </CardActions>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </div>
      );
   }
 }
 
 
  
-export default connect()(Page3);
+Page3.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+const styledForm = withStyles(styles)(Page3);
+
+export default connect()(styledForm);
