@@ -10,13 +10,13 @@ import registerServiceWorker from './registerServiceWorker';
 const survey = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_PAGE_1':
-      return { ...state, page1: action.payload };
+      return { ...state, feeling: action.payload };
     case 'ADD_PAGE_2':
-      return { ...state, page2: action.payload };
+      return { ...state, understanding: action.payload };
     case 'ADD_PAGE_3':
-      return { ...state, page3: action.payload };
+      return { ...state, support: action.payload };
     case 'ADD_PAGE_4':
-      return { ...state, page4: action.payload };
+      return { ...state, comments: action.payload };
     default:
       return state;
   }

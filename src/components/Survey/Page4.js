@@ -13,8 +13,13 @@ class Page4 extends Component {
   }
 
   handleSubmit = (event) =>  {
+    // Prevent redirect page on submit of form
     event.preventDefault();
+
+    // dispatch action to reducer
     this.props.dispatch({type: 'ADD_PAGE_4', payload: this.state.input});
+    
+    // Redirect to page 5
     this.setState({
       toPage5: true
     })
@@ -53,6 +58,4 @@ class Page4 extends Component {
   }
 }
 
-
- 
 export default connect()(Page4);

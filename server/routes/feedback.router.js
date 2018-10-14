@@ -37,7 +37,6 @@ router.post('/', (req, res) => {
     })
 }) // END post feedback
 
-// TODO: test working
 // // Delete a survey
 router.delete('/:id', (req, res) => {
 

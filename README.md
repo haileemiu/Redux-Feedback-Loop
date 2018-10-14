@@ -8,8 +8,11 @@
 
 - [x] create admin view
 - [x] working delete button
-- [ ] survey views
+- [x] survey views
+- [ ] send redux state to post router
 
+
+- [ ] Add descriptive comments
 - [ ] LAST: delete console logs (keep until the end for later reference)
 
 
