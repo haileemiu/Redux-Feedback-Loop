@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = ({
+  
+});
 
 class Page5 extends Component {
   constructor(props) {
@@ -47,6 +54,7 @@ class Page5 extends Component {
     }
 
     if (!this.state.callSuccess) {
+     
       return (
         <div>
           <p>Could not submit responses to server!</p>
@@ -58,7 +66,16 @@ class Page5 extends Component {
     return (
       <div>
         <h1>THANK YOU!</h1>
-        <button onClick={this.handleClick}>Leave New Feedback</button>
+        <h3>Your response has been submitted.</h3>
+        {/* <button onClick={this.handleClick}>Leave New Feedback</button> */}
+
+        <Button
+          variant="contained"
+          color="secondary"
+          type="submit"
+          onClick={this.handleClick}>
+          Leave New Feedback
+        </Button>
       </div>
     );
   }
@@ -68,4 +85,12 @@ const mapStateToProps = (state) => ({
   feedback: state.feedback
 })
 
-export default connect(mapStateToProps)(Page5);
+// export default connect(mapStateToProps)(Page5);
+
+Page5.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+const styledForm = withStyles(styles)(Page5);
+
+export default connect(mapStateToProps)(styledForm);

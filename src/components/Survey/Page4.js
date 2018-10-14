@@ -15,7 +15,7 @@ import {
   CardHeader
 } from '@material-ui/core';
 
-const styles = ({
+const styles =  ({
 
 });
 
@@ -29,13 +29,13 @@ class Page4 extends Component {
     }
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = (event) =>  {
     // Prevent redirect page on submit of form
     event.preventDefault();
 
     // dispatch action to reducer
-    this.props.dispatch({ type: 'ADD_PAGE_4', payload: this.state.input });
-
+    this.props.dispatch({type: 'ADD_PAGE_4', payload: this.state.input});
+    
     // Redirect to page 5
     this.setState({
       toPage5: true
@@ -48,46 +48,46 @@ class Page4 extends Component {
     })
   }
 
-  render() {
+  render() { 
     const { classes } = this.props;
     if (this.state.toPage5 === true) {
       return <Redirect to='/page5' />
     }
 
-    return (
+    return ( 
       <div className={classes.root}>
-        <Grid container spacing={24} justify="center">
-          <Grid item xs={6}>
-            <Card>
-              <CardHeader subheader="Page 4 of 4" />
-              <CardContent>
-                <Typography variant="h5" >
-                  Any extra comments?
-                </Typography>
-                <form>
-                  <TextField
-                    label="you can be honest"
-                    value={this.state.input}
-                    onChange={this.handleChange}
-                    margin="normal"
-                  />
-                  <CardActions>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                      onClick={this.handleSubmit}>
-                      NEXT
-                    </Button>
-                  </CardActions>
-                </form>
-              </CardContent>
-            </Card>
-          </Grid>
+      <Grid container spacing={24} justify="center">
+        <Grid item xs={6}>
+          <Card>
+            <CardHeader subheader="Page 4 of 4" />
+            <CardContent>
+              <Typography variant="h5" >
+                Any more comments? 
+              </Typography>
+              <form>
+                <TextField
+                  label="you can be honest"
+                  value={this.state.input}
+                  onChange={this.handleChange}
+                  margin="normal"
+                />
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    onClick={this.handleSubmit}>
+                    NEXT
+                  </Button>
+                </CardActions>
+              </form>
+            </CardContent>
+          </Card>
         </Grid>
-      </div>
+      </Grid>
+    </div>
 
-    );
+     );
   }
 }
 
