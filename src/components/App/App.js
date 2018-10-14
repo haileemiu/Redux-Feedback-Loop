@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import Admin from '../Admin/Admin';
 import Page1 from '../Survey/Page1';
@@ -20,13 +20,15 @@ class App extends Component {
             <h4><i>Don't forget it!</i></h4>
           </header>
           <br />
-
-          <Route path="/feedback" component={Admin} />
-          <Route path="/page1" component={Page1} />
-          <Route path="/page2" component={Page2} />
-          <Route path="/page3" component={Page3} />
-          <Route path="/page4" component={Page4} />
-          <Route path="/page5" component={Page5} />
+          <Switch>
+            <Route path="/feedback" component={Admin} />
+            <Route path="/page1" component={Page1} />
+            <Route path="/page2" component={Page2} />
+            <Route path="/page3" component={Page3} />
+            <Route path="/page4" component={Page4} />
+            <Route path="/page5" component={Page5} />
+            <Redirect to='/page1' />
+          </Switch>
 
         </div>
       </Router>
