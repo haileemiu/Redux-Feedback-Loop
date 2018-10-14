@@ -21,7 +21,7 @@ class App extends Component {
           </header>
           <br />
           <Switch>
-            <Route path="/feedback" component={Admin} />
+            <Route path="/admin" component={Admin} />
             <Route path="/page1" component={Page1} />
             <Route path="/page2" component={Page2} />
             <Route path="/page3" component={Page3} />

@@ -12,7 +12,7 @@ class Admin extends Component {
   getSurveys() {
     axios({
       method: 'GET',
-      url: '/feedback'
+      url: '/admin'
     }).then(response => {
       console.log(response.data);
       this.setState({
@@ -28,7 +28,7 @@ class Admin extends Component {
   deleteSurvey(id) {
     axios({
       method: 'DELETE', 
-      url: `/feedback/${id}`
+      url: `/admin/${id}`
     }).then(response => {
       this.getSurveys();
     }).catch(error => {

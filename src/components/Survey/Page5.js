@@ -18,7 +18,7 @@ class Page5 extends Component {
     // Post to router on page load
     axios({
       method: 'POST',
-      url: '/feedback',
+      url: '/admin',
       data: this.props.survey
     }).then(response => {
       this.setState({ callComplete: true, callSuccess: true })
