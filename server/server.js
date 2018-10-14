@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
+// One router for the admin view
+// One router for the feedback survey views
 const adminRouter = require('./routes/admin.router');
 const feedbackRouter = require('./routes/feedback.router');
 app.use('/admin', adminRouter);

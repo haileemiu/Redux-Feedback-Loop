@@ -3,47 +3,47 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 class Admin extends Component {
-  
+  // Local state to store data to be mapped in a table
   state = {
-    surveys: []
+    feedback: []
   }
 
-  // Get survey data
-  getSurveys() {
+  // Get feedback data
+  getFeedback() {
     axios({
       method: 'GET',
       url: '/admin'
     }).then(response => {
-      console.log(response.data);
+      // Set local state on return
       this.setState({
-        surveys: response.data
+        feedback: response.data
       })
-    }).catch((error) => {
-      alert('unable to get surveys');
-      console.log('error', error);
+    }).catch(() => {
+      alert('Unable to get feedback data.');
     })
   }
 
-  // Delete a survey
-  deleteSurvey(id) {
+  // Delete a feedback entry
+  deleteFeedbackEntry(id) {
     axios({
       method: 'DELETE', 
       url: `/admin/${id}`
-    }).then(response => {
-      this.getSurveys();
-    }).catch(error => {
-      alert('unable to delete survey');
-      console.log('ERROR:', error);
+    }).then(() => {
+      // Load the feedback after delete 
+      this.getFeedback();
+    }).catch(() => {
+      alert('Unable to delete feedback.');
     })
   }
 
-  // Delete survey click
-  handleClick = (survey) => () => {
-    this.deleteSurvey(survey.id);
+  // Delete feedback click
+  handleClick = (feedback) => () => {
+    this.deleteFeedbackEntry(feedback.id);
   }
 
+  // Call get on page load  
   componentDidMount() {
-    this.getSurveys();
+    this.getFeedback();
   }
 
   render() { 
@@ -60,15 +60,15 @@ class Admin extends Component {
             <th>Delete</th>
             </tr>
           </thead>
-
+          {/* Loop through the data and display each entry in a new row */}
           <tbody>
-            {this.state.surveys.map((survey) => {
-              return <tr key={survey.id}>
-                <td>{survey.feeling}</td>
-                <td>{survey.understanding}</td>
-                <td>{survey.support}</td>
-                <td>{survey.comments}</td>
-                <td><button onClick={this.handleClick(survey)}>Delete</button></td>
+            {this.state.feedback.map((feedback) => {
+              return <tr key={feedback.id}>
+                <td>{feedback.feeling}</td>
+                <td>{feedback.understanding}</td>
+                <td>{feedback.support}</td>
+                <td>{feedback.comments}</td>
+                <td><button onClick={this.handleClick(feedback)}>Delete</button></td>
                 
               </tr>
             })}

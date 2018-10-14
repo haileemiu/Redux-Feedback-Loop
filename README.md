@@ -1,7 +1,9 @@
 # Redux Feedback Loop
 
----
 
+This app is to practice a full stack application using: React, React Routes, and Redux.  It is a version of Prime's daily feedback form for students to rate how they feel about the day. Admin can view the data and gauge how the class overall is responding to the day's lectures and activities.
+
+## To Do
 - [x] set up server side routes
 - [x] get the feedback from database
 - [x] post feedback to database
@@ -17,6 +19,7 @@
 
 
 ---
+# Original Assignment Directions
 
 > **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 

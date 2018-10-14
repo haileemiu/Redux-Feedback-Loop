@@ -19,7 +19,7 @@ class Page5 extends Component {
     axios({
       method: 'POST',
       url: '/feedback',
-      data: this.props.survey
+      data: this.props.feedback
     }).then(response => {
       this.setState({ callComplete: true, callSuccess: true })
     }).catch(error => {
@@ -65,7 +65,7 @@ class Page5 extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  survey: state.survey
+  feedback: state.feedback
 })
 
 export default connect(mapStateToProps)(Page5);

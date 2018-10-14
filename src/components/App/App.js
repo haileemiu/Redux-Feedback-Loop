@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
+// Connect all pages
 import Admin from '../Admin/Admin';
 import Page1 from '../Survey/Page1';
 import Page2 from '../Survey/Page2';
@@ -20,6 +21,8 @@ class App extends Component {
             <h4><i>Don't forget it!</i></h4>
           </header>
           <br />
+           {/* Routes */}
+           {/* Switch to redirect to page 1 on load of localhost:3000 */}
           <Switch>
             <Route path="/admin" component={Admin} />
             <Route path="/page1" component={Page1} />

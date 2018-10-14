@@ -7,7 +7,7 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
-const survey = (state = {}, action) => {
+const feedback = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_PAGE_1':
       return { ...state, feeling: action.payload };
@@ -23,7 +23,7 @@ const survey = (state = {}, action) => {
 }
 
 const allReducers = combineReducers({
-  survey
+  feedback
 })
 
 const store = createStore(
