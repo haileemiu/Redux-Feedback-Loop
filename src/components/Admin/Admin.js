@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import swal from 'sweetalert';
+
 
 import PropTypes from 'prop-types';
 
@@ -13,11 +15,11 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
+  // Dialog,
+  // DialogActions,
+  // DialogContent,
+  // DialogContentText,
+  // DialogTitle
 
 } from '@material-ui/core';
 
@@ -73,18 +75,28 @@ class Admin extends Component {
 
   // Delete feedback click
   handleClick = (feedback) => () => {
-    this.deleteFeedbackEntry(feedback.id);
-    this.setState({ open: true });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this survey!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        this.deleteFeedbackEntry(feedback.id);
+        swal("Poof! Your survey has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your survey is safe!");
+      }
+    });
+
+
+
+    
   }
-
-  // Dialog box
-  handleDisagreeClose = () => {
-    this.setState({ open: false });
-  };
-
-  handleAgreeClose = () => {
-    this.setState({ open: false });
-  };
 
   // Call get on page load  
   componentDidMount() {
@@ -120,30 +132,7 @@ class Admin extends Component {
                   <TableCell>{feedback.support}</TableCell>
                   <TableCell>{feedback.comments}</TableCell>
                   <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell>
-                  <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                  >
-                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
-            </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={this.handleDisagreeClose} color="primary">
-                        Disagree
-            </Button>
-                      <Button onClick={this.handleAgreeClose} color="primary" autoFocus>
-                        Agree
-            </Button>
-                    </DialogActions>
-                  </Dialog>
 
-                  {/* <TableCell><Button variant="contained" color="secondary" size="small" onClick={this.handleClick(feedback)}>Delete</Button></TableCell> */}
 
                 </TableRow>
               })}

@@ -20,6 +20,7 @@ This app is to practice a full stack application using: React, React Routes, and
 - [x] most recent feedback at the top
 - [x] style admin table
 - [ ] confirm delete
+
 ---
 # Original Assignment Directions
 
