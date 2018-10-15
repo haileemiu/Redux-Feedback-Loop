@@ -93,9 +93,6 @@ class Admin extends Component {
       }
     });
 
-
-
-    
   }
 
   // Call get on page load  
