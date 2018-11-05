@@ -24,6 +24,7 @@ const feedback = (state = {}, action) => {
 }
 
 const allReducers = combineReducers({
+  // feedback: feedback
   feedback
 })
 
